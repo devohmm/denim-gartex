@@ -1,43 +1,57 @@
+import useScrollAnimation from '../hooks/useScrollAnimation.js'
+
 export default function About() {
+  const ref = useScrollAnimation()
+
   return (
-    <section id="about" className="about">
+    <section id="about" className="about" ref={ref}>
       <div className="container">
         <div className="about__content">
           <div className="about__text">
-            <h2>About Denim Gartex</h2>
-            <p className="about__lead">
-              We are a specialized denim processing unit with over a decade of expertise in transforming raw denim into premium finished products. Our state-of-the-art facility in Howrah is equipped with cutting-edge machinery and staffed by skilled professionals.
+            <span className="section__eyebrow animate-on-scroll">Who We Are</span>
+            <h2 className="animate-on-scroll">Your Partner After Stitching — Before Retail</h2>
+            <p className="about__lead animate-on-scroll">
+              Denim Gartex is a garment washing and finishing factory in Howrah, West Bengal.
+              Brands and manufacturers send us <strong>stitched denim pieces</strong> — jeans, jackets, shorts —
+              and we apply every wash, color, and design effect to make them retail-ready.
+              Think of us as the step between your stitching floor and the store shelf.
             </p>
             <div className="about__features">
-              <div className="feature">
-                <div className="feature__icon">🏭</div>
-                <h3>Modern Facility</h3>
-                <p>State-of-the-art processing equipment and quality control systems</p>
+              <div className="feature animate-on-scroll">
+                <div className="feature__icon-wrap">🏭</div>
+                <div>
+                  <h3>Full Wash Floor</h3>
+                  <p>Industrial washing, dyeing, laser, ozone & hand-finishing lines for garment processing</p>
+                </div>
               </div>
-              <div className="feature">
-                <div className="feature__icon">👥</div>
-                <h3>Expert Team</h3>
-                <p>Experienced professionals with deep knowledge of denim processing</p>
+              <div className="feature animate-on-scroll">
+                <div className="feature__icon-wrap">🎨</div>
+                <div>
+                  <h3>Design & Color Team</h3>
+                  <p>Whiskers, abrasions, tints, overdye — we recreate any wash look on your garments</p>
+                </div>
               </div>
-              <div className="feature">
-                <div className="feature__icon">✨</div>
-                <h3>Quality Focus</h3>
-                <p>Rigorous quality control ensuring consistent, premium results</p>
+              <div className="feature animate-on-scroll">
+                <div className="feature__icon-wrap">📦</div>
+                <div>
+                  <h3>Piece-by-Piece QC</h3>
+                  <p>Every garment inspected, counted, and packed before dispatch back to you</p>
+                </div>
               </div>
             </div>
           </div>
-          <div className="about__stats">
-            <div className="stat">
-              <div className="stat__number">10+</div>
-              <div className="stat__label">Years Experience</div>
+          <div className="about__visual animate-on-scroll">
+            <div className="about__card about__card--primary">
+              <span className="about__card-number">10+</span>
+              <span className="about__card-label">Years in Business</span>
             </div>
-            <div className="stat">
-              <div className="stat__number">1000+</div>
-              <div className="stat__label">Projects Completed</div>
+            <div className="about__card about__card--secondary">
+              <span className="about__card-number">50K+</span>
+              <span className="about__card-label">Pieces / Month Capacity</span>
             </div>
-            <div className="stat">
-              <div className="stat__number">50+</div>
-              <div className="stat__label">Happy Clients</div>
+            <div className="about__card about__card--accent">
+              <span className="about__card-number">24hr</span>
+              <span className="about__card-label">Quote Response Time</span>
             </div>
           </div>
         </div>
@@ -45,4 +59,3 @@ export default function About() {
     </section>
   )
 }
-

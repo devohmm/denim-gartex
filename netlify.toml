@@ -13,3 +13,10 @@
 [dev]
   command = "npm run dev"
   port = 5173
+
+# Site configuration
+[context.production]
+  command = "npm run build"
+
+[context.deploy-preview]
+  command = "npm run build"
