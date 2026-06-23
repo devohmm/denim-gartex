@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import useActiveSection from '../../hooks/useActiveSection.js'
+import SectionLink from './SectionLink.jsx'
 
 const LINKS = [
   { id: 'about', label: 'About' },
@@ -36,14 +37,14 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 safe-top transition-all duration-500 ${
           scrolled
             ? 'bg-white/95 backdrop-blur-xl shadow-sm border-b border-navy/5 py-3'
             : 'bg-transparent py-5'
         }`}
       >
         <div className="container-wide flex items-center justify-between">
-          <a href="#" className="flex items-center gap-3 group">
+          <SectionLink className="flex items-center gap-3 group">
             <div className="w-10 h-10 bg-navy rounded-lg flex items-center justify-center group-hover:bg-gold transition-colors duration-300">
               <span className="text-gold group-hover:text-navy font-bold text-sm tracking-tight transition-colors">DG</span>
             </div>
@@ -55,13 +56,13 @@ export default function Navbar() {
                 Garment Washing
               </span>
             </div>
-          </a>
+          </SectionLink>
 
           <nav className="hidden lg:flex items-center gap-8">
             {LINKS.map((link) => (
-              <a
+              <SectionLink
                 key={link.id}
-                href={`#${link.id}`}
+                section={link.id}
                 className={`relative text-sm font-medium transition-colors duration-300 ${
                   scrolled ? 'text-navy/70 hover:text-navy' : 'text-white/70 hover:text-white'
                 } ${active === link.id ? (scrolled ? 'text-navy' : 'text-white') : ''}`}
@@ -73,23 +74,23 @@ export default function Navbar() {
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold rounded-full"
                   />
                 )}
-              </a>
+              </SectionLink>
             ))}
           </nav>
 
           <div className="flex items-center gap-3">
-            <a
-              href="#contact"
+            <SectionLink
+              section="contact"
               className={`hidden sm:inline-flex btn-primary !py-2.5 !px-5 !text-xs ${
                 !scrolled ? '!bg-white !text-navy hover:!bg-gold' : ''
               }`}
             >
               Get Quote
-            </a>
+            </SectionLink>
             <button
               type="button"
               onClick={() => setMenuOpen(true)}
-              className={`lg:hidden p-2 rounded-lg ${scrolled ? 'text-navy' : 'text-white'}`}
+              className={`lg:hidden tap-target flex items-center justify-center rounded-lg ${scrolled ? 'text-navy' : 'text-white'}`}
               aria-label="Open menu"
             >
               <Menu size={24} />
@@ -112,29 +113,38 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-white p-8 flex flex-col"
+              className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-white p-6 sm:p-8 flex flex-col overflow-y-auto overscroll-contain"
             >
               <div className="flex justify-between items-center mb-10">
                 <span className="font-bold text-navy">Menu</span>
-                <button type="button" onClick={() => setMenuOpen(false)} aria-label="Close menu">
+                <button
+                  type="button"
+                  onClick={() => setMenuOpen(false)}
+                  aria-label="Close menu"
+                  className="tap-target flex items-center justify-center -mr-2"
+                >
                   <X size={24} className="text-navy" />
                 </button>
               </div>
               <nav className="flex flex-col gap-1 flex-1">
                 {LINKS.map((link) => (
-                  <a
+                  <SectionLink
                     key={link.id}
-                    href={`#${link.id}`}
+                    section={link.id}
                     onClick={() => setMenuOpen(false)}
-                    className="py-3 text-lg font-medium text-navy border-b border-navy/5"
+                    className="py-3.5 min-h-[48px] text-lg font-medium text-navy border-b border-navy/5 flex items-center"
                   >
                     {link.label}
-                  </a>
+                  </SectionLink>
                 ))}
               </nav>
-              <a href="#contact" onClick={() => setMenuOpen(false)} className="btn-primary w-full text-center mt-6">
+              <SectionLink
+                section="contact"
+                onClick={() => setMenuOpen(false)}
+                className="btn-primary w-full text-center mt-6"
+              >
                 Request Production Quote
-              </a>
+              </SectionLink>
             </motion.div>
           </motion.div>
         )}

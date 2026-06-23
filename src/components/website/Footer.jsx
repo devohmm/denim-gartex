@@ -1,15 +1,17 @@
+import SectionLink from './SectionLink.jsx'
+
 export default function Footer() {
   const links = [
-    { href: '#about', label: 'About' },
-    { href: '#services', label: 'Services' },
-    { href: '#process', label: 'Process' },
-    { href: '#factory', label: 'Factory' },
-    { href: '#gallery', label: 'Gallery' },
-    { href: '#contact', label: 'Contact' },
+    { section: 'about', label: 'About' },
+    { section: 'services', label: 'Services' },
+    { section: 'process', label: 'Process' },
+    { section: 'factory', label: 'Factory' },
+    { section: 'gallery', label: 'Gallery' },
+    { section: 'contact', label: 'Contact' },
   ]
 
   return (
-    <footer className="bg-navy-dark text-white py-16">
+    <footer className="bg-navy-dark text-white py-12 sm:py-16 pb-24 sm:pb-16">
       <div className="container-wide">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           <div>
@@ -34,8 +36,10 @@ export default function Footer() {
             <h4 className="text-xs uppercase tracking-widest text-gold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               {links.map((l) => (
-                <li key={l.href}>
-                  <a href={l.href} className="text-white/50 text-sm hover:text-white transition-colors">{l.label}</a>
+                <li key={l.section}>
+                  <SectionLink section={l.section} className="text-white/50 text-sm hover:text-white transition-colors">
+                    {l.label}
+                  </SectionLink>
                 </li>
               ))}
             </ul>
@@ -53,7 +57,7 @@ export default function Footer() {
 
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between gap-2 text-white/30 text-xs">
           <span>© {new Date().getFullYear()} Denim Gartex. All rights reserved.</span>
-          <span>Garment Washing · Denim Finishing · Export-Grade QC</span>
+          <span className="text-center sm:text-left">Garment Washing · Denim Finishing · Export-Grade QC</span>
         </div>
       </div>
     </footer>

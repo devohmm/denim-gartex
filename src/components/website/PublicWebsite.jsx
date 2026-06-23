@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { initSectionRouting } from '../../lib/sectionNav.js'
 import Navbar from './Navbar.jsx'
 import Hero from './Hero.jsx'
 import TrustBar from './TrustBar.jsx'
@@ -15,6 +17,10 @@ import Contact from './Contact.jsx'
 import Footer from './Footer.jsx'
 
 export default function PublicWebsite() {
+  useEffect(() => {
+    initSectionRouting()
+  }, [])
+
   return (
     <div className="overflow-x-hidden">
       <Navbar />
@@ -37,7 +43,7 @@ export default function PublicWebsite() {
         href="https://wa.me/917980433091?text=Hi%20Denim%20Gartex,%20I%20would%20like%20to%20discuss%20a%20production%20order."
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300"
+        className="fixed safe-bottom right-4 sm:right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300"
         aria-label="WhatsApp"
       >
         <svg viewBox="0 0 24 24" fill="white" width="26" height="26">

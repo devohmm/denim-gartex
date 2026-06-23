@@ -14,19 +14,19 @@ export default function Gallery() {
   return (
     <section id="gallery" className="section-padding bg-white">
       <div className="container-wide">
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
           <span className="eyebrow">Gallery</span>
           <h2 className="heading-section mb-4">Inside Our Operations</h2>
-          <p className="text-navy/60 text-lg">A look at our wash floor, finishing processes, and quality standards.</p>
+          <p className="text-navy/60 text-base sm:text-lg">A look at our wash floor, finishing processes, and quality standards.</p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <div className="flex flex-wrap justify-center gap-2 mb-8 sm:mb-10 -mx-1 px-1">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
               type="button"
               onClick={() => setFilter(cat)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+              className={`px-4 py-2.5 min-h-[44px] rounded-full text-sm font-medium transition-all duration-300 ${
                 filter === cat
                   ? 'bg-navy text-white shadow-md'
                   : 'bg-surface text-navy/60 hover:bg-navy/5'
@@ -56,13 +56,13 @@ export default function Gallery() {
                   className="w-full object-cover group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-navy-dark/0 group-hover:bg-navy-dark/60 transition-all duration-300 flex items-end p-5">
-                  <div className="translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 w-full flex justify-between items-end">
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/80 via-navy-dark/20 to-transparent sm:from-navy-dark/0 sm:via-transparent sm:to-transparent sm:group-hover:from-navy-dark/60 flex items-end p-4 sm:p-5">
+                  <div className="w-full flex justify-between items-end sm:translate-y-4 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 transition-all duration-300">
                     <div>
                       <p className="text-gold text-xs uppercase tracking-widest mb-1">{img.cat}</p>
-                      <p className="text-white font-semibold">{img.title}</p>
+                      <p className="text-white font-semibold text-sm sm:text-base">{img.title}</p>
                     </div>
-                    <ZoomIn className="text-white/70" size={20} />
+                    <ZoomIn className="text-white/70 hidden sm:block" size={20} />
                   </div>
                 </div>
               </motion.div>
@@ -77,12 +77,12 @@ export default function Gallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[70] bg-navy-dark/95 backdrop-blur-sm flex items-center justify-center p-5"
+            className="fixed inset-0 z-[70] bg-navy-dark/95 backdrop-blur-sm flex items-center justify-center p-4 sm:p-5"
             onClick={() => setLightbox(null)}
           >
             <button
               type="button"
-              className="absolute top-6 right-6 text-white/70 hover:text-white"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 tap-target flex items-center justify-center text-white/70 hover:text-white rounded-full"
               onClick={() => setLightbox(null)}
               aria-label="Close"
             >
@@ -94,12 +94,12 @@ export default function Gallery() {
               exit={{ scale: 0.9, opacity: 0 }}
               src={lightbox.src}
               alt={lightbox.title}
-              className="max-w-full max-h-[85vh] rounded-xl object-contain shadow-premium"
+              className="max-w-full max-h-[75vh] sm:max-h-[85vh] rounded-xl object-contain shadow-premium"
               onClick={(e) => e.stopPropagation()}
             />
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
+            <div className="absolute left-4 right-4 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 text-center safe-bottom">
               <p className="text-gold text-sm uppercase tracking-widest">{lightbox.cat}</p>
-              <p className="text-white font-semibold text-lg">{lightbox.title}</p>
+              <p className="text-white font-semibold text-base sm:text-lg">{lightbox.title}</p>
             </div>
           </motion.div>
         )}

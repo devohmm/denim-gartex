@@ -21,8 +21,8 @@ function StatItem({ stat, index }) {
       transition={{ delay: index * 0.1, duration: 0.6 }}
       className="text-center"
     >
-      <div className="text-4xl md:text-5xl font-bold text-gold mb-2">{display}</div>
-      <div className="text-white font-medium mb-1">{stat.label}</div>
+      <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-gold mb-2">{display}</div>
+      <div className="text-white font-medium text-sm sm:text-base mb-1">{stat.label}</div>
       <div className="text-white/40 text-sm">{stat.sub}</div>
     </motion.div>
   )
@@ -33,9 +33,14 @@ export default function Statistics() {
     <section className="section-padding bg-navy relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-20" />
       <div className="container-wide relative">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 sm:gap-10">
           {STATS.map((stat, i) => (
-            <StatItem key={stat.label} stat={stat} index={i} />
+            <div
+              key={stat.label}
+              className={i === STATS.length - 1 ? 'col-span-2 sm:col-span-1 max-w-xs mx-auto sm:max-w-none' : ''}
+            >
+              <StatItem stat={stat} index={i} />
+            </div>
           ))}
         </div>
       </div>

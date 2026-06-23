@@ -59,7 +59,11 @@ export default function Factory() {
             <div className="rounded-2xl overflow-hidden shadow-premium aspect-[4/3]">
               <img src={IMAGES.factory} alt="Denim jeans wash and finishing" className="w-full h-full object-cover" />
             </div>
-            <div className="absolute -bottom-4 -left-4 bg-navy text-white p-5 rounded-xl shadow-elevated hidden md:block">
+            <div className="mt-4 flex sm:hidden items-center gap-4 bg-navy text-white p-4 rounded-xl shadow-elevated">
+              <div className="text-xl font-bold text-gold">Howrah</div>
+              <div className="text-sm text-white/60">West Bengal, India</div>
+            </div>
+            <div className="absolute -bottom-4 -left-4 bg-navy text-white p-5 rounded-xl shadow-elevated hidden lg:block">
               <div className="text-2xl font-bold text-gold">Howrah</div>
               <div className="text-sm text-white/60">West Bengal, India</div>
             </div>

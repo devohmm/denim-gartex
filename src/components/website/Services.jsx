@@ -61,7 +61,7 @@ function ServicePanel({ service, index }) {
       custom={index}
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
-      className="group relative overflow-hidden rounded-2xl bg-navy-dark min-h-[320px] cursor-default"
+      className="group relative overflow-hidden rounded-2xl bg-navy-dark min-h-[260px] sm:min-h-[320px] cursor-default"
     >
       <img
         src={service.image}
@@ -70,7 +70,7 @@ function ServicePanel({ service, index }) {
       />
       <div className={`absolute inset-0 bg-gradient-to-t ${service.color} via-navy-dark/80 to-navy-dark/60`} />
 
-      <div className="relative z-10 p-8 h-full flex flex-col justify-end">
+      <div className="relative z-10 p-6 sm:p-8 h-full flex flex-col justify-end">
         <div className="w-14 h-14 rounded-xl bg-gold/20 backdrop-blur-sm border border-gold/30 flex items-center justify-center mb-6 group-hover:bg-gold group-hover:scale-110 transition-all duration-300">
           <Icon className="text-gold group-hover:text-navy-dark transition-colors" size={24} />
         </div>

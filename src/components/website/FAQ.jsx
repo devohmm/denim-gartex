@@ -41,7 +41,7 @@ function FaqItem({ item, isOpen, onToggle }) {
         <span className="font-semibold text-navy group-hover:text-gold-dark transition-colors pr-4">
           {item.q}
         </span>
-        <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors ${
+        <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 transition-colors ${
           isOpen ? 'bg-gold text-navy-dark' : 'bg-surface text-navy/40'
         }`}>
           {isOpen ? <Minus size={16} /> : <Plus size={16} />}
@@ -75,7 +75,7 @@ export default function FAQ() {
           <h2 className="heading-section">Frequently Asked Questions</h2>
         </div>
 
-        <div className="bg-surface rounded-2xl px-8 md:px-10">
+        <div className="bg-surface rounded-2xl px-5 sm:px-8 md:px-10">
           {FAQS.map((item, i) => (
             <FaqItem
               key={i}

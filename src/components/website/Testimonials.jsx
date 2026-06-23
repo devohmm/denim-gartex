@@ -53,10 +53,10 @@ export default function Testimonials() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="bg-white rounded-2xl p-10 md:p-14 shadow-elevated border border-navy/5 text-center relative"
+              className="bg-white rounded-2xl p-6 sm:p-8 md:p-14 shadow-elevated border border-navy/5 text-center relative"
             >
-              <Quote className="text-gold/30 mx-auto mb-8" size={48} />
-              <p className="text-navy text-xl md:text-2xl leading-relaxed font-display mb-10">
+              <Quote className="text-gold/30 mx-auto mb-6 sm:mb-8" size={40} />
+              <p className="text-navy text-lg sm:text-xl md:text-2xl leading-relaxed font-display mb-8 sm:mb-10">
                 &ldquo;{t.quote}&rdquo;
               </p>
               <div>
@@ -70,7 +70,7 @@ export default function Testimonials() {
             <button
               type="button"
               onClick={() => setCurrent((c) => (c - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
-              className="w-10 h-10 rounded-full border border-navy/10 flex items-center justify-center hover:bg-navy hover:text-white transition-colors"
+              className="tap-target w-11 h-11 rounded-full border border-navy/10 flex items-center justify-center hover:bg-navy hover:text-white transition-colors"
               aria-label="Previous"
             >
               <ChevronLeft size={18} />
@@ -81,17 +81,19 @@ export default function Testimonials() {
                   key={i}
                   type="button"
                   onClick={() => setCurrent(i)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    i === current ? 'bg-gold w-6' : 'bg-navy/20'
-                  }`}
+                  className="tap-target flex items-center justify-center p-2"
                   aria-label={`Go to testimonial ${i + 1}`}
-                />
+                >
+                  <span className={`block h-2 rounded-full transition-all duration-300 ${
+                    i === current ? 'bg-gold w-6' : 'bg-navy/20 w-2'
+                  }`} />
+                </button>
               ))}
             </div>
             <button
               type="button"
               onClick={() => setCurrent((c) => (c + 1) % TESTIMONIALS.length)}
-              className="w-10 h-10 rounded-full border border-navy/10 flex items-center justify-center hover:bg-navy hover:text-white transition-colors"
+              className="tap-target w-11 h-11 rounded-full border border-navy/10 flex items-center justify-center hover:bg-navy hover:text-white transition-colors"
               aria-label="Next"
             >
               <ChevronRight size={18} />

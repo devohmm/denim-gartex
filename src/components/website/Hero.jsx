@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, ChevronDown } from 'lucide-react'
 import { fadeUp, staggerContainer } from '../../lib/animations.js'
+import SectionLink from './SectionLink.jsx'
 
 import { IMAGES } from '../../lib/images.js'
 
@@ -19,11 +20,11 @@ export default function Hero() {
         <img src={IMAGES.hero} alt="Denim jeans garment washing factory" className="w-full h-full object-cover scale-105" />
         <div className="absolute inset-0 bg-gradient-to-br from-navy-dark/95 via-navy/90 to-navy-dark/85" />
         <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-40" />
-        {/* Animated particles */}
+        {/* Animated particles — desktop only */}
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-gold/30 rounded-full"
+            className="absolute w-1 h-1 bg-gold/30 rounded-full hidden sm:block"
             style={{ left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%` }}
             animate={{ opacity: [0.2, 0.8, 0.2], y: [0, -30, 0] }}
             transition={{ duration: 3 + Math.random() * 4, repeat: Infinity, delay: Math.random() * 2 }}
@@ -31,7 +32,7 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="relative z-10 container-wide w-full pt-28 pb-20">
+      <div className="relative z-10 container-wide w-full pt-24 sm:pt-28 pb-24 sm:pb-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div variants={staggerContainer} initial="hidden" animate="visible">
             <motion.span variants={fadeUp} className="eyebrow !text-gold-light">
@@ -58,14 +59,14 @@ export default function Hero() {
               color development, and piece-level quality control for leading apparel manufacturers.
             </motion.p>
 
-            <motion.div variants={fadeUp} custom={3} className="flex flex-wrap gap-4">
-              <a href="#contact" className="btn-primary group">
+            <motion.div variants={fadeUp} custom={3} className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+              <SectionLink section="contact" className="btn-primary group w-full sm:w-auto">
                 Request Production Quote
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </a>
-              <a href="#process" className="btn-outline">
+              </SectionLink>
+              <SectionLink section="process" className="btn-outline w-full sm:w-auto">
                 Explore Our Process
-              </a>
+              </SectionLink>
             </motion.div>
           </motion.div>
 
@@ -103,18 +104,22 @@ export default function Hero() {
         </div>
       </div>
 
-      <motion.a
-        href="#trust"
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 hover:text-white/70 transition-colors"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden sm:block"
       >
-        <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-        <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
-          <ChevronDown size={20} />
-        </motion.div>
-      </motion.a>
+        <SectionLink
+          section="trust"
+          className="flex flex-col items-center gap-2 text-white/40 hover:text-white/70 transition-colors"
+        >
+          <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+          <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
+            <ChevronDown size={20} />
+          </motion.div>
+        </SectionLink>
+      </motion.div>
     </section>
   )
 }

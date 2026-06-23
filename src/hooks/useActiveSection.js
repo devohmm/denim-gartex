@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
+import { getSectionFromPath, syncPathToSection } from '../lib/sectionNav.js'
 
 export default function useActiveSection(sectionIds) {
-  const [active, setActive] = useState(sectionIds[0])
+  const [active, setActive] = useState(() => getSectionFromPath() || '')
 
   useEffect(() => {
     const observers = []
@@ -22,6 +23,19 @@ export default function useActiveSection(sectionIds) {
 
     return () => observers.forEach((o) => o.disconnect())
   }, [sectionIds])
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY < 80) setActive('')
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => {
+    if (active) syncPathToSection(active)
+    else syncPathToSection(null)
+  }, [active])
 
   return active
 }

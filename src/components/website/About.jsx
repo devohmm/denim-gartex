@@ -56,16 +56,25 @@ export default function About() {
             <div className="relative rounded-2xl overflow-hidden aspect-[4/5] shadow-premium">
               <img src={IMAGES.about} alt="Stacked jeans ready for washing and finishing" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/60 to-transparent" />
-              <div className="absolute bottom-8 left-8 right-8">
-                <p className="text-white/80 text-sm uppercase tracking-widest mb-2">Howrah, West Bengal</p>
-                <p className="text-white font-display text-2xl">Jeans Washing & Finishing</p>
+              <div className="absolute bottom-6 sm:bottom-8 left-6 sm:left-8 right-6 sm:right-8">
+                <p className="text-white/80 text-xs sm:text-sm uppercase tracking-widest mb-2">Howrah, West Bengal</p>
+                <p className="text-white font-display text-xl sm:text-2xl">Jeans Washing & Finishing</p>
               </div>
             </div>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 0.5 }}
-              className="absolute -bottom-6 -right-6 bg-gold text-navy-dark p-6 rounded-2xl shadow-elevated hidden md:block"
+              className="mt-4 flex sm:hidden items-center gap-4 bg-gold text-navy-dark p-4 rounded-2xl shadow-elevated"
+            >
+              <div className="text-2xl font-bold">50K+</div>
+              <div className="text-sm font-medium opacity-80">Pieces / Month</div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 0.5 }}
+              className="absolute -bottom-6 -right-6 bg-gold text-navy-dark p-6 rounded-2xl shadow-elevated hidden lg:block"
             >
               <div className="text-3xl font-bold">50K+</div>
               <div className="text-sm font-medium opacity-80">Pieces / Month</div>

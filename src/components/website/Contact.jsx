@@ -64,7 +64,7 @@ export default function Contact() {
   return (
     <section id="contact" className="section-padding bg-surface">
       <div className="container-wide">
-        <div className="grid lg:grid-cols-5 gap-16">
+        <div className="grid lg:grid-cols-5 gap-10 sm:gap-16">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -110,7 +110,7 @@ export default function Contact() {
             viewport={{ once: true }}
             className="lg:col-span-3"
           >
-            <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 md:p-10 shadow-elevated border border-navy/5">
+            <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-5 sm:p-8 md:p-10 shadow-elevated border border-navy/5">
               <div className="grid sm:grid-cols-2 gap-5 mb-5">
                 <div>
                   <label className="block text-sm font-medium text-navy mb-1.5">Full Name *</label>
